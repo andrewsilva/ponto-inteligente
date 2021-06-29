@@ -1,14 +1,22 @@
+import { LogarComponent } from './components/logar.component';
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { LoginComponent } from './components';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
-  declarations: [
-    LoginComponent
-  ],
+  declarations: [LoginComponent, LogarComponent],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    RouterModule,
+    RouterModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FlexLayoutModule,
+  ],
 })
-export class LoginModule { }
+export class LoginModule {}
