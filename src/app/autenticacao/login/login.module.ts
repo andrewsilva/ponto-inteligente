@@ -1,3 +1,4 @@
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LogarComponent } from './components/logar.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -17,6 +18,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ReactiveFormsModule,
     HttpClientModule,
     FlexLayoutModule,
+    NgbModule
   ],
 })
 export class LoginModule {}

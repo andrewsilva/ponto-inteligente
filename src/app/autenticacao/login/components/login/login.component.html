@@ -1,14 +1,28 @@
-<form [formGroup]="form" fxLayoutAlign="center center" novalidate>
-  <div class="mb-3 row">
-    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-    <div class="col-sm-10">
-      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-    </div>
+<div class="card" id="telaLogin">
+  <div class="card-body" id="fundo">
+    <form>
+      <div class="mb-3">
+        <label class="form-label">Login</label>
+        <input
+          type="email"
+          class="form-control"
+          id=""
+          aria-describedby="emailHelp"
+          placeholder="Informe seu email"
+        />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Senha</label>
+        <input
+          type="password"
+          class="form-control"
+          id=""
+          placeholder="Insira sua senha"
+          placement="right"
+          ngbTooltip="A senha precisa ter no minimo 6 caracteres"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
   </div>
-  <div class="mb-3 row">
-    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword">
-    </div>
-  </div>
-</form>
+</div>
