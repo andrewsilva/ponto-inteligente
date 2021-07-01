@@ -1,12 +1,13 @@
 <div class="card" id="telaLogin">
   <div class="card-body" id="fundo">
-    <form>
+    <form [formGroup]="form" novalidate>
       <div class="mb-3">
         <label class="form-label">Login</label>
         <input
           type="email"
           class="form-control"
-          id=""
+          formControlName="email"
+          id="email"
           aria-describedby="emailHelp"
           placeholder="Informe seu email"
         />
@@ -16,13 +17,40 @@
         <input
           type="password"
           class="form-control"
-          id=""
+          formControlName="senha"
+          id="senha"
           placeholder="Insira sua senha"
           placement="right"
           ngbTooltip="A senha precisa ter no minimo 6 caracteres"
         />
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+
+      <div class="d-grid gap-2">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="form.invalid"
+          (click)="logar()"
+        >
+          Entrar
+        </button>
+      </div>
+      <div class class="clearfix">
+        <button
+          type="button"
+          class="btn btn-link float-start"
+          routerLink="/cadastro-pf"
+        >
+          Cadastro PF
+        </button>
+        <button
+          type="button"
+          class="btn btn-link float-end"
+          routerLink="/cadastro-pj"
+        >
+          Cadastro PJ
+        </button>
+      </div>
     </form>
   </div>
 </div>
