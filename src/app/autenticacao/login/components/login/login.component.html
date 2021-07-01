@@ -24,7 +24,6 @@
           ngbTooltip="A senha precisa ter no minimo 6 caracteres"
         />
       </div>
-
       <div class="d-grid gap-2">
         <button
           type="submit"
@@ -53,4 +52,15 @@
       </div>
     </form>
   </div>
+</div>
+
+<!----->
+<div style="position: absolute; top: 0; right: 0">
+  <ngb-toast
+    *ngIf="show"
+    class="bg-danger text-light"
+    [delay]="3000"
+    [autohide]="true"
+    >{{msg}}</ngb-toast
+  >
 </div>

@@ -1,6 +1,9 @@
+import { LoginService } from './../../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Login } from '../../models';
+
 
 @Component({
   selector: 'app-login',
@@ -10,8 +13,9 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   form!: FormGroup;
   show = false;
+  msg: string = "";
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private loginService: LoginService) {}
 
   ngOnInit(): void {
     this.gerarForm();
@@ -25,10 +29,30 @@ export class LoginComponent implements OnInit {
   }
 
   logar() {
-    if(this.form.invalid){
-      this.show = true;
-      //chamar o toaster
+    if (this.form.invalid) {
+      return;
     }
-    alert(JSON.stringify(this.form.value));
+    const login: Login = this.form.value;
+    this.loginService.logar(login)
+    .subscribe(data => {
+      console.log(JSON.stringify(data));
+      localStorage['token'] = data['data']['token'];
+      const usuarioData = JSON.parse(atob(data['data']['token'].split('.')[1]));
+      console.log(JSON.stringify(usuarioData));
+      if(usuarioData['role'] == 'ROLE_ADMIN'){
+        alert("vaii pra pagina admin");
+      }else{
+        alert('vai pra pagina de funcionario')
+      }
+    },
+    err =>{
+      this.msg = "";
+      this.msg = "Tente novamente em instantes";
+      if(err['status'] == 401){
+        this.msg = "Email/Senha invalido(s)";
+      }
+      this.show = true;
+    }
+    )
   }
 }
