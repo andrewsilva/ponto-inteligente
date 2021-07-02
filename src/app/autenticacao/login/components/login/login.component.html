@@ -55,12 +55,5 @@
 </div>
 
 <!----->
-<div style="position: absolute; top: 0; right: 0">
-  <ngb-toast
-    *ngIf="show"
-    class="bg-danger text-light"
-    [delay]="3000"
-    [autohide]="true"
-    >{{msg}}</ngb-toast
-  >
-</div>
+<app-toast *ngIf="show" [mensagem]="msg"></app-toast>
+

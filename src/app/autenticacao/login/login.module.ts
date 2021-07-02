@@ -1,3 +1,4 @@
+import { ToastComponent } from './../../utils/components/toast/toast.component';
 import { LoginService } from './services';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LogarComponent } from './components/logar.component';
@@ -8,17 +9,15 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './components';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
-  declarations: [LoginComponent, LogarComponent],
+  declarations: [LoginComponent, LogarComponent, ToastComponent],
   imports: [
     CommonModule,
     RouterModule,
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FlexLayoutModule,
     NgbModule,
   ],
   providers: [LoginService],

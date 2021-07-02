@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from '../../models';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -50,9 +49,11 @@ export class LoginComponent implements OnInit {
       this.msg = "Tente novamente em instantes";
       if(err['status'] == 401){
         this.msg = "Email/Senha invalido(s)";
+        this.show = true;
       }
-      this.show = true;
+
     }
     )
+    this.show = false;
   }
 }
