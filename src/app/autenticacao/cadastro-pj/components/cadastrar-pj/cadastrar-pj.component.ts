@@ -2,6 +2,8 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
+import { CadastroPj } from '../../models';
+
 @Component({
   selector: 'app-cadastrar-pj',
   templateUrl: './cadastrar-pj.component.html',
@@ -28,9 +30,10 @@ export class CadastrarPjComponent implements OnInit {
   }
 
   cadastrarPj() {
-    if (this.form?.invalid) {
+    if (this.form.invalid) {
       return;
     }
-    alert(JSON.stringify(this.form.value));
+    const cadastroPj: CadastroPj = this.form.value;
+    alert(JSON.stringify(cadastroPj));
   }
 }
