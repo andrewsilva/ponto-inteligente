@@ -1,3 +1,4 @@
+import { SharedModule } from './../../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -15,6 +16,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SharedModule
   ],
 })
 export class CadastroPjModule {}
