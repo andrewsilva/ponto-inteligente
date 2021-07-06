@@ -16,9 +16,14 @@ export class CadastrarPjComponent implements OnInit {
   form: FormGroup;
 
   show = false;
-  msg = "";
+  msg = '';
+  msgErr = '';
 
-  constructor(private fb: FormBuilder, private router: Router, private cadastroPjService: CadastroPjService) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private cadastroPjService: CadastroPjService
+  ) {}
 
   ngOnInit(): void {
     this.gerarForm();
@@ -40,13 +45,22 @@ export class CadastrarPjComponent implements OnInit {
       return;
     }
     const cadastroPj: CadastroPj = this.form.value;
-    this.cadastroPjService.cadastrar(cadastroPj)
-    .subscribe(
-      data => {
+    this.cadastroPjService.cadastrar(cadastroPj).subscribe(
+      (data) => {
         console.log(JSON.stringify(data));
-         this.msg = "Realize o login para acessar o sistema.";
-
+        this.msg = 'Realize o login para acessar o sistema.';
+        this.show = true;
+        this.router.navigate(['/login']);
+      },
+      (err) => {
+        console.log(JSON.stringify(err));
+        this.msg = 'Tente novamente em instantes.';
+        if (err.status == 400) {
+          this.msgErr = err.error.errors.join(' ');
+        }
+        this.msg = this.msgErr;
       }
-    )
+    );
+    return false;
   }
 }
