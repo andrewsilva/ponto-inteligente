@@ -1,3 +1,5 @@
+import { UtilsModule } from './../../utils/utils.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from './../../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -16,7 +18,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    NgbModule,
+    UtilsModule
   ],
 })
 export class CadastroPjModule {}

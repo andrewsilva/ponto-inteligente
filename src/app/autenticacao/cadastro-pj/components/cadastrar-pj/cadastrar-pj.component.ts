@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { CadastroPj } from '../../models';
 
+import { CadastroPjService } from './../../services';
 import { CpfValidator, CnpjValidator } from '../../../../shared/validators';
 
 @Component({
@@ -14,7 +15,10 @@ import { CpfValidator, CnpjValidator } from '../../../../shared/validators';
 export class CadastrarPjComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  show = false;
+  msg = "";
+
+  constructor(private fb: FormBuilder, private router: Router, private cadastroPjService: CadastroPjService) {}
 
   ngOnInit(): void {
     this.gerarForm();
@@ -36,6 +40,13 @@ export class CadastrarPjComponent implements OnInit {
       return;
     }
     const cadastroPj: CadastroPj = this.form.value;
-    alert(JSON.stringify(cadastroPj));
+    this.cadastroPjService.cadastrar(cadastroPj)
+    .subscribe(
+      data => {
+        console.log(JSON.stringify(data));
+         this.msg = "Realize o login para acessar o sistema.";
+
+      }
+    )
   }
 }

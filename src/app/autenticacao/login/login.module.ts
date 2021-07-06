@@ -1,4 +1,4 @@
-import { ToastComponent } from './../../utils/components/toast/toast.component';
+import { UtilsModule } from './../../utils/utils.module';
 import { LoginService } from './services';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LogarComponent } from './components/logar.component';
@@ -11,7 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [LoginComponent, LogarComponent, ToastComponent],
+  declarations: [LoginComponent, LogarComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
+    UtilsModule
   ],
   providers: [LoginService],
 })
