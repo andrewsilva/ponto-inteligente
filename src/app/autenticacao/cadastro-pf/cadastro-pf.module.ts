@@ -1,3 +1,4 @@
+import { CadastrarPfService } from './services/';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UtilsModule } from './../../utils/utils.module';
 import { SharedModule } from './../../shared/shared.module';
@@ -19,7 +20,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HttpClientModule,
     SharedModule,
     UtilsModule,
-    NgbModule
+    NgbModule,
   ],
+  providers:[
+    CadastrarPfService
+  ]
 })
 export class CadastroPfModule {}

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CnpjValidator, CpfValidator } from './../../../../shared/validators';
+import { CadastroPf } from '../../models';
+import { CadastrarPfService } from '../../services';
 
 @Component({
   selector: 'app-cadastrar-pf',
@@ -13,7 +15,11 @@ export class CadastrarPfComponent implements OnInit {
   show = false;
   msg = '';
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private cadastrarPfService: CadastrarPfService
+  ) {}
 
   ngOnInit(): void {
     this.gerarForm();
@@ -33,7 +39,20 @@ export class CadastrarPfComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    alert(JSON.stringify(this.form.value));
+
+    const cadastroPf: CadastroPf = this.form.value;
+    this.cadastrarPfService.cadastrar(cadastroPf).subscribe(
+      (data) => {
+        this.msg = 'Realize o login para acessar o sistema.';
+        this.router.navigate(['/login']);
+      },
+      (err) => {
+        this.msg = 'Tente novamente em instantes.';
+        if (err.status == 400) {
+          this.msg = err.error.errors.join(' ');
+        }
+      }
+    );
     return false;
   }
 }
