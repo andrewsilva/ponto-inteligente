@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   show = false;
   msg: string = "";
 
-  constructor(private fb: FormBuilder, private loginService: LoginService) {}
+  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) {}
 
   ngOnInit(): void {
     this.gerarForm();
@@ -34,14 +34,12 @@ export class LoginComponent implements OnInit {
     const login: Login = this.form.value;
     this.loginService.logar(login)
     .subscribe(data => {
-      console.log(JSON.stringify(data));
       localStorage['token'] = data['data']['token'];
       const usuarioData = JSON.parse(atob(data['data']['token'].split('.')[1]));
-      console.log(JSON.stringify(usuarioData));
       if(usuarioData['role'] == 'ROLE_ADMIN'){
-        alert("vaii pra pagina admin");
+        this.router.navigate(['/admin']);
       }else{
-        alert('vai pra pagina de funcionario')
+        this.router.navigate(['/funcionario']);
       }
     },
     err =>{
