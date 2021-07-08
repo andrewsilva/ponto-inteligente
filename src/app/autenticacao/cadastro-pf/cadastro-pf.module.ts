@@ -1,15 +1,25 @@
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UtilsModule } from './../../utils/utils.module';
+import { SharedModule } from './../../shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CadastrarPfComponent } from './components/cadastrar-pf/cadastrar-pf.component';
-
-
+import { CadastrarPfComponent, CadastroPfComponent } from './components';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
-  declarations: [
-    CadastrarPfComponent
-  ],
+  declarations: [CadastrarPfComponent, CadastroPfComponent],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    RouterModule,
+    FlexLayoutModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    SharedModule,
+    UtilsModule,
+    NgbModule
+  ],
 })
-export class CadastroPfModule { }
+export class CadastroPfModule {}
