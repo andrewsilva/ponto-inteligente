@@ -7,7 +7,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 #telaCadastro{
   width: 350px;
   position: absolute;
-  top: 30%;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 1px 5px 30px rgb(195, 195, 195);
+}
+
+#telaCadastroPf{
+  width: 350px;
+  position: absolute;
+  top: 31%;
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 1px 5px 30px rgb(195, 195, 195);

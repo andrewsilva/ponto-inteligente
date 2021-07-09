@@ -1,0 +1,38 @@
+<div fxLayoutAlign="center">
+  <ul class="list-group">
+    <li class="list-group-item border-0">
+      <button class="btn btn-outline-info" routerLink="/funcionario/listagem">
+        Ver Lançamentos
+      </button>
+    </li>
+    <li class="list-group-item border-0">
+      <strong>Data:</strong>&nbsp;{{ dataAtual }}
+    </li>
+    <li class="list-group-item border-0">
+      <strong>Localização:</strong>&nbsp; {{ geoLocation }}
+      &nbsp;
+      <a target="_blank" *ngIf="geoLocation" [href]="obterUrlMapa()"
+        >Abrir Mapa</a>
+    </li>
+    <li class="list-group-item border-0" *ngIf="exibirInicioTrabalho()">
+      <button class="btn btn-primary" (click)="iniciarTrabalho()">
+        Iniciar Trabalho
+      </button>
+    </li>
+    <li class="list-group-item border-0" *ngIf="exibirInicioAlmoco()">
+      <button class="btn btn-primary" (click)="iniciarAlmoco()">
+        Iniciar Almoço
+      </button>
+    </li>
+    <li class="list-group-item border-0" *ngIf="exibirTerminoAlmoco()">
+      <button class="btn btn-primary" (click)="terminarAlmoco()">
+        Terminar Almoço
+      </button>
+    </li>
+    <li class="list-group-item border-0" *ngIf="exibirTerminoTrabalho()">
+      <button class="btn btn-primary" (click)="terminarTrabalho()">
+        Terminar Trabalho
+      </button>
+    </li>
+  </ul>
+</div>

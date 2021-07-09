@@ -1,3 +1,4 @@
+import { FuncionarioModule, FuncionarioRoutingModule } from './funcionario';
 import { RouterModule } from '@angular/router';
 import { LoginModule, LoginRoutingModule, CadastroPjModule, CadastroPjRoutingModule, CadastroPfModule, CadastroPfRoutingModule } from './autenticacao';
 import { NgModule } from '@angular/core';
@@ -21,6 +22,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CadastroPjRoutingModule,
     CadastroPfModule,
     CadastroPfRoutingModule,
+    FuncionarioModule,
+    FuncionarioRoutingModule,
 
     AppRoutingModule,
 
