@@ -1,10 +1,14 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
-import { Tipo } from '../../../shared';
+import {
+  Tipo,
+  Lancamento,
+  LancamentoService,
+  HttpUtilService,
+} from '../../../shared';
 
 import * as moment from 'moment';
-import { resolve } from 'q';
 
 declare var navigator: any;
 
@@ -18,8 +22,13 @@ export class LancamentoComponent implements OnInit {
   dataAtual: string;
   geoLocation: any;
   ultimoTipoLancado: string;
+  msg: string;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private httpUtil: HttpUtilService,
+    private lancamentoService: LancamentoService
+  ) {}
 
   ngOnInit(): void {
     this.dataAtual = moment().format('DD/MM/YYYY HH:mm:ss');
@@ -32,8 +41,8 @@ export class LancamentoComponent implements OnInit {
   obterGeoLocation(): any {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        position =>
-        this.geoLocation = (`${position.coords.latitude},${position.coords.longitude}`)
+        (position) =>
+          (this.geoLocation = `${position.coords.latitude},${position.coords.longitude}`)
       );
     }
     return '';
@@ -56,13 +65,38 @@ export class LancamentoComponent implements OnInit {
   }
 
   obterUltimoLancamento() {
-    this.ultimoTipoLancado = '';
+    this.lancamentoService.buscarUltimoTipoLancado()
+    .subscribe(
+      data => {
+        this.ultimoTipoLancado = data.data ? data.data.tipo: '';
+      },
+      err =>{
+        this.msg = "Erro obtendo ultimo lancamento";
+      }
+    );
   }
 
   cadastrar(tipo: Tipo) {
-    alert(
-      `Tipo: ${tipo}, dataAtualEn: ${this.dataAtualEn}, geolocation: ${this.geoLocation}`
+    const lancamento: Lancamento = new Lancamento(
+      this.dataAtualEn,
+      tipo,
+      this.geoLocation,
+      this.httpUtil.obterIdUsuario()
     );
+
+    this.lancamentoService.cadastrar(lancamento)
+    .subscribe(
+      data =>{
+        this.msg = "Lançamento realizado com sucesso!";
+        this.router.navigate(['/funcionario/listagem']);
+      },
+      err =>{
+        this.msg = "Tente novamente em instantes"
+        if(err.status == 400){
+          this.msg = err.error.errors.join(' ');
+        }
+      }
+    )
   }
 
   obterUrlMapa(): string {

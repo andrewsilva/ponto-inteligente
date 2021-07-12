@@ -1,5 +1,6 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+
 # compiled output
 /dist
 /tmp
@@ -44,3 +45,37 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#bagunca_cors
+Default/
+ThirdPartyModuleList64/
+SwReporter/
+ZxcvbnData/
+SSLErrorAssistant/
+Subresource Filter/
+AutoFillStates/
+hyphen-data/
+AutoFillRegex/
+BrowserMetrics/
+browserMetrics-spare.pma
+CertificateRevocation/
+Crashpad/
+Crowd Deny/
+DesktopSharingHub/
+FileTypePolicies/
+First Run
+Floc/
+CrashpadMetrics-active.pma
+GrShaderCache/
+Last Browser
+Last Version
+Local State
+Module Info Cache
+OnDeviceHeadSuggestModel/
+OriginTrials/
+pnacl/
+Safe Browsing Cookies
+Safe Browsing Cookies-journal
+Safe Browsing/
+SafetyTips/
+ShaderCache/

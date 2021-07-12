@@ -8,9 +8,11 @@ import {
   FuncionarioComponent,
 } from './components';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { LancamentoService, HttpUtilService } from '../shared';
 
 @NgModule({
   declarations: [ListagemComponent, LancamentoComponent, FuncionarioComponent],
   imports: [CommonModule, FlexLayoutModule, RouterModule, ReactiveFormsModule],
+  providers: [HttpUtilService, LancamentoService]
 })
 export class FuncionarioModule {}
