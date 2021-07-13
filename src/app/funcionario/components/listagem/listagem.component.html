@@ -1,1 +1,21 @@
-<p>listagem works!</p>
+<button class="btn btn-primary" routerLink="/funcionario">
+  Adicionar Lançamento
+</button>
+<table class="table table-hover">
+  <thead>
+    <tr class="table-info">
+      <th sortable="data" scope="col" (sort)="onSort($event)">Data</th>
+      <th scope="col" sortable="tipo" (sort)="onSort($event)">Tipo</th>
+      <th scope="col" sortable="localizacao" (sort)="onSort($event)">
+        Localização
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dados of dataSource">
+      <td>{{ dados.data }}</td>
+      <td>{{ dados.tipo }}</td>
+      <td>{{ dados.localizacao }}</td>
+    </tr>
+  </tbody>
+</table>

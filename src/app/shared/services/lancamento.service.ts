@@ -1,3 +1,4 @@
+import { SortDirection } from './../directives/sort.directive';
 import { HttpUtilService } from './http-util.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -30,6 +31,18 @@ export class LancamentoService {
     return this.http.post(
       env.baseUrlApi + this.PATH,
       lancamento,
+      this.httpUtil.headers()
+    );
+  }
+
+  listarTodosLancamentos(): Observable<any> {
+    return this.http.get(
+      env.baseUrlApi +
+        this.PATH +
+        this.PATH_TODOS_LANC.replace(
+          '{funcionarioId}',
+          this.httpUtil.obterIdUsuario()
+        ),
       this.httpUtil.headers()
     );
   }
