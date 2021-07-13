@@ -15,9 +15,17 @@ export class ListagemComponent implements OnInit {
   dataSource: Lancamento[];
   msg: string;
 
+  page = 1;
+  pageSize = 10;
+
+  lancamento: Lancamento[];
+
+
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
 
-  constructor(private lancamentoService: LancamentoService) {}
+  constructor(private lancamentoService: LancamentoService) {
+    //this.refreshPages();
+  }
 
   ngOnInit(): void {
     this.lancamentoService.listarTodosLancamentos().subscribe(
@@ -48,4 +56,22 @@ export class ListagemComponent implements OnInit {
       });
     }
   }
+
+  // refreshPages(){
+  //   this.lancamentoService.listarTodosLancamentos().subscribe(
+  //     (data) => {
+  //       this.dataSource = data['data'];
+  //       this.lancamento = this.dataSource
+  //       .map((pagina, i) => ({id: i + 1, ...pagina}))
+  //       .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+  //     },
+  //     (err) => {
+  //       this.msg = 'Erro obtendo lancamento';
+  //     }
+  //   );
+  //   console.log("datasource!", this.dataSource);
+  //   // this.lancamento = this.dataSource
+  //   // .map((pagina, i) => ({id: i + 1, ...pagina}))
+  //   // .slice((this.page - 1) * this.pageSize, (this.page -1) * this.pageSize + this.pageSize);
+  // }
 }

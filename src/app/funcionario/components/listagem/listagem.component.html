@@ -12,10 +12,24 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let dados of dataSource">
+    <tr
+      *ngFor="
+        let dados of dataSource
+          | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize
+      "
+    >
       <td>{{ dados.data }}</td>
       <td>{{ dados.tipo }}</td>
       <td>{{ dados.localizacao }}</td>
     </tr>
   </tbody>
 </table>
+
+  <ngb-pagination
+    class="d-flex justify-content-center"
+    [collectionSize]="dataSource.length"
+    [(page)]="page"
+    [pageSize]="pageSize"
+  >
+  </ngb-pagination>
+
