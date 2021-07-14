@@ -18,8 +18,8 @@
           | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize
       "
     >
-      <td>{{ dados.data }}</td>
-      <td>{{ dados.tipo }}</td>
+      <td>{{ dados.data | data }}</td>
+      <td>{{ dados.tipo | tipo }}</td>
       <td>{{ dados.localizacao }}</td>
     </tr>
   </tbody>
@@ -30,6 +30,8 @@
     [collectionSize]="dataSource.length"
     [(page)]="page"
     [pageSize]="pageSize"
+    [directionLinks]="false"
+    [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"
   >
   </ngb-pagination>
 
