@@ -1,3 +1,5 @@
+import { AdminRoutingModule } from './admin/admin-routing.module';
+import { AdminModule } from './admin/admin.module';
 import { FuncionarioModule, FuncionarioRoutingModule } from './funcionario';
 import { RouterModule } from '@angular/router';
 import { LoginModule, LoginRoutingModule, CadastroPjModule, CadastroPjRoutingModule, CadastroPfModule, CadastroPfRoutingModule } from './autenticacao';
@@ -25,9 +27,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CadastroPfRoutingModule,
     FuncionarioModule,
     FuncionarioRoutingModule,
+    AdminModule,
+    AdminRoutingModule,
 
     AppRoutingModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent]
